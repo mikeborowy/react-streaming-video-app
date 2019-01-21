@@ -7,7 +7,6 @@ class Login extends Component {
         window.gapi.load('client:auth2', () => {
             window.gapi.client
             .init({
-                //react-streaming-app: 
                 clientId: '345522151377-vkhlm3isk7buijhs4pu4ljk7tigueiu2.apps.googleusercontent.com',
                 scope: 'email'
             }).then(() => {

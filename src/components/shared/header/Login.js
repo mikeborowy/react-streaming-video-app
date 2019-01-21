@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { onSignIn, onSignOut } from '../../../reducers/auth';
 class Login extends Component {
@@ -9,24 +10,18 @@ class Login extends Component {
                 //react-streaming-app: 
                 clientId: '345522151377-vkhlm3isk7buijhs4pu4ljk7tigueiu2.apps.googleusercontent.com',
                 scope: 'email'
-            })
-            .then(() => {
+            }).then(() => {
                 this.auth = window.gapi.auth2.getAuthInstance();
-
-                this.onAuthChange(this.auth.isSignedIn.get())
+                this.onAuthChange(this.auth.isSignedIn.get());
                 this.auth.isSignedIn.listen(this.onAuthChange);
-            });
+            });   
         });
     }
 
     onAuthChange = (isSignedIn) => {
-        console.log(this.props);
-        console.log(isSignedIn);
-        if (isSignedIn ) {
-            this.props.onSignIn(this.auth.currentUser.get().getId())
-        } else {
-            this.props.onSignOut();
-        }
+        isSignedIn
+        ? this.props.onSignIn(this.auth.currentUser.get().getId())
+        : this.props.onSignOut();
     }
 
     onSignInClick = () => {
@@ -75,10 +70,12 @@ const mapStateToProps = (state) => ({
     isSignedIn: state.auth.isSignedIn
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    onSignIn,
-    onSignOut
-});
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        onSignIn,
+        onSignOut
+    }, dispatch);
+};
 
 export default connect(
     mapStateToProps, 

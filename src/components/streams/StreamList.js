@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { onGetStreamListAPI } from '../../reducers/streams';
 
-const StreamShow = () => {
-    return (
-        <div>
-            StreamShow
-        </div>
-    );
+class StreamShow extends Component {
+
+    componentDidMount() {
+        this.props.onGetStreamListAPI();
+    }
+
+    render() {
+        return (
+            <div>
+                StreamShow
+            </div>
+        );
+    }
 };
 
-export default StreamShow;
+export default connect(
+    null,
+    { onGetStreamListAPI }
+)(StreamShow);

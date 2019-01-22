@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunk from 'redux-thunk';
+import reduxThunk from 'redux-thunk';
 import rootReducers from '../reducers';
 
 const storeLogger = (store) => (next) => (action) => {
@@ -13,7 +13,7 @@ export default createStore(
     rootReducers,
     compose(
         applyMiddleware(
-            thunk,
+            reduxThunk,
             storeLogger
         ),
         window.__REDUX_DEVTOOLS_EXTENSION__ ? window.devToolsExtension() : fn => fn

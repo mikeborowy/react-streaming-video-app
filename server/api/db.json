@@ -1,28 +1,29 @@
 {
   "streams": [
     {
-      "title": "ss",
-      "description": "ssss",
+      "title": "Coco Jumbo",
+      "description": "Dos Del Rio",
       "id": 1
     },
     {
-      "title": "stream 1",
-      "description": "This is stream 1",
+      "title": "What Is Love",
+      "description": "Haddaway",
       "id": 2
     },
     {
-      "title": "test 2",
-      "description": "test 2",
+      "title": "Przez Twe oczy Zielone",
+      "description": "Akcent",
       "id": 3
     },
     {
-      "title": "stream 1",
-      "description": "stream 1",
+      "title": "Ona Tańczy dla mnie",
+      "description": "Weekend",
       "id": 4
     },
     {
-      "title": "stream 1",
-      "description": "stream 1",
+      "title": "Lambada",
+      "description": "Kaoma",
+      "userId": "109342356250586918937",
       "id": 5
     }
   ]

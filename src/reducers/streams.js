@@ -53,8 +53,9 @@ export const onGetStreamListAPI = () => async (dispatch) => {
     dispatch(onGetStreamList(response.data));
 };
 
-export const onCreateStreamAPI = (formValues) => async (dispatch) => {
-    const response = await streamsAPI.post('/streams', formValues);
+export const onCreateStreamAPI = (formValues) => async (dispatch, getState) => {
+    const {userId} = {...getState().auth};
+    const response = await streamsAPI.post('/streams', {...formValues, userId});
     dispatch(onCreateStream(response.data));
 };
 

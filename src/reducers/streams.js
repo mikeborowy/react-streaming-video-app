@@ -1,4 +1,5 @@
 import { streamsAPI } from '../api/index';
+import history from '../history';
 import _ from 'lodash';
 
 export const types = {
@@ -57,6 +58,7 @@ export const onCreateStreamAPI = (formValues) => async (dispatch, getState) => {
     const {userId} = {...getState().auth};
     const response = await streamsAPI.post('/streams', {...formValues, userId});
     dispatch(onCreateStream(response.data));
+    history.push('/');
 };
 
 export const onGetStreamAPI = (id) => async (dispatch) => {
@@ -65,13 +67,15 @@ export const onGetStreamAPI = (id) => async (dispatch) => {
 };
 
 export const onEditStreamAPI = (id,formValues) => async (dispatch) => {
-    const response = await streamsAPI.put(`/streams/${id}`, formValues);
+    const response = await streamsAPI.patch(`/streams/${id}`, formValues);
     dispatch(onEditStream(response.data));
+    history.push('/');
 };
 
 export const onDeleteStreamAPI = (id) => async (dispatch) => {
     await streamsAPI.delete(`/streams/${id}`);
     dispatch(onDeleteStream(id));
+    history.push('/');
 };
 /** REQ ACTIONS END */
 

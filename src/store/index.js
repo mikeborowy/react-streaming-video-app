@@ -16,7 +16,7 @@ export default createStore(
             reduxThunk,
             storeLogger
         ),
-        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.devToolsExtension() : fn => fn
+        window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : fn => fn
     )
 );
 
